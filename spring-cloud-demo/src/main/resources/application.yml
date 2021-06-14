@@ -1,0 +1,29 @@
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+server:
+  port: 9999
+
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+      - name: DemoGlobalFilter
+      routes:
+        - id: srv-1
+          uri: http://localhost:9091
+          predicates:
+            - Path=/test/A
+          filters:
+          - name: DemoPreFilter
+          - name: DemoPosFilter
+        - id: srv-2
+          uri: http://localhost:9092
+          predicates:
+            - Path=/test/B
+          filters:
+          - name: DemoPreFilter
+          - name: DemoPosFilter

@@ -1,0 +1,4 @@
+message: ${MESSAGE:0}
+
+server:
+  port: ${PORT:9090}
